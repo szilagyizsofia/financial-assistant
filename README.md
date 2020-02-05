@@ -18,3 +18,5 @@ Az alkalmazás felhasználói különböző jogosultságokkal rendelkeznek, bizo
 
 GIVEN | WHEN | THEN
 --- | --- | ---
+Megfelelő jogosultságokkal rendelkező, bejelentkezett felhasználó vagyok | Kiválasztom a kiadás/bevétel hozzáadása menüpontot | Megjelenik a kiadás/bevétel adatbeviteli form
+Kitöltöttem a kiadás/bevétel adatbeviteli form kötelező mezőit | Rákattintok a mentésre | A bevitt adatok az adatbázisba íródnak
