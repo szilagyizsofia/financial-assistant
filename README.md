@@ -12,9 +12,9 @@ Megvalósítandó, hogy az alkalmazást csak regisztrált felhasználók haszná
 
 A tárolt adatok alapján a felhasználók vásárlási szokásairól statisztika készül, mely megmutatja például, mennyi pénzt költött a felhasználó adott idő leforgása alatt, és ez arányaiban hogyan oszlott el a kategóriák között.
 
-Az alkalmazás felhasználói különböző jogosultságokkal rendelkeznek, bizonyos funkciókhoz, például meghatározott statisztikákhoz nem fér hozzá minden felhasználó.
+Az alkalmazás felhasználói különböző jogosultságokkal rendelkeznek, bizonyos funkciókhoz, például meghatározott statisztikákhoz, vagy rendszeres kiadások és bevételek megadásához nem fér hozzá minden felhasználó.
 
-![Use case diagram](https://github.com/szilagyizsofia/financial-assistant/blob/master/use_case_diagram.jpg)
+![Use case diagram](https://github.com/szilagyizsofia/financial-assistant/blob/master/use_case.jpg)
 
 GIVEN | WHEN | THEN
 --- | --- | ---
@@ -30,7 +30,7 @@ Megfelelő jogosultságokkal rendelkező, bejelentkezett felhasználó vagyok | 
 Kiválasztottam a megtekinteni kívánt statisztikát | Rendelkezem a megtekintéshez szükséges jogosultsággal  | Megjelenik a statisztika
 Kiválasztottam a megtekinteni kívánt statisztikát | Nem rendelkezem a megtekintéshez szükséges jogosultsággal | Nem jelenik meg a statisztika
 Megfelelő jogosultságokkal rendelkező, bejelentkezett felhasználó vagyok | Kiválasztom a felhasználói profil szerkesztése menüpontot | Megjelenik egy form 
-Kiválasztottam egyet a felhasználói célok közül és/vagy megadtam egy rendszeres kiadást/bevételt | Rákattintok a mentésre | A profil adatai a megadottaknek megfelelően frissülnek az adatbázisban
+Megadtam egy rendszeres kiadást/bevételt | Rákattintok a mentésre | A profil adatai a megadottaknek megfelelően frissülnek az adatbázisban
 Bejelentkezett admin vagyok | Kiválasztom a felhasználók kezelése menüpontot | A végrehajtható műveletek listázásra kerülnek
 Kiválasztottam a felhasználó jogosultságainak módosítása opciót | Kiválasztom a felhasználót | Megjelenik egy form
 Megadom az új jogosultságokat | A mentésre kattintok | Az adatbázisban az adott felhasználó adatai a megadottaknak megfelelően frissülnek
