@@ -19,4 +19,19 @@ Az alkalmazás felhasználói különböző jogosultságokkal rendelkeznek, bizo
 GIVEN | WHEN | THEN
 --- | --- | ---
 Megfelelő jogosultságokkal rendelkező, bejelentkezett felhasználó vagyok | Kiválasztom a kiadás/bevétel hozzáadása menüpontot | Megjelenik a kiadás/bevétel adatbeviteli form
-Kitöltöttem a kiadás/bevétel adatbeviteli form kötelező mezőit | Rákattintok a mentésre | A bevitt adatok az adatbázisba íródnak
+Kitöltöttem a kiadás/bevétel adatbeviteli form kötelező mezőit megfelelő formátumú adatokkal | Rákattintok a mentésre | A bevitt adatok az adatbázisba íródnak
+Megfelelő jogosultságokkal rendelkező, bejelentkezett felhasználó vagyok | Kiválasztom a kiadás/bevétel törlése menüpontot | Listázásra kerülnek az eddigi kiadásaim/bevételeim
+Kiválasztottam a kiadás/bevétel törlése menüpontot | Kiválasztom a listából a törölni kívánt kiadást/bevételt | A kiválasztott kiadás/bevétel törlődik az adatbázisból
+Megfelelő jogosultságokkal rendelkező, bejelentkezett felhasználó vagyok | Kiválasztom a kiadás/bevétel módosítása menüpontot | Listázásra kerülnek az eddigi kiadásaim/bevételeim
+Kiválasztottam a kiadás/bevétel módosítása menüpontot | Kiválasztom a listából a módosítani kívánt kiadást/bevételt | Megjelenik a kiválasztott kiadás/bevétel adatbeviteli formja az aktuális adatokkal kitöltve
+Átírtam a kiadás/bevétel adatbeviteli form módosítani kívánt mezőit úgy, hogy kötelező mezőt nem hagytam üresen, és a megadott adatok megfelelő formátumúak | Rákattintok a mentésre | A kiválasztott kiadás/bevétel adatai a megadottaknak megfelelően frissülnek az adatbázisban
+Megfelelő jogosultságokkal rendelkező, bejelentkezett felhasználó vagyok | Kiválasztom a kiadások/bevételek listázása menüpontot | Listázásra kerülnek az eddigi kiadásaim/bevételeim
+Megfelelő jogosultságokkal rendelkező, bejelentkezett felhasználó vagyok | Kiválasztom a statisztikák megtekintése menüpontot | Listázásra kerülnek a statisztikák
+Kiválasztottam a megtekinteni kívánt statisztikát | Rendelkezem a megtekintéshez szükséges jogosultsággal  | Megjelenik a statisztika
+Kiválasztottam a megtekinteni kívánt statisztikát | Nem rendelkezem a megtekintéshez szükséges jogosultsággal | Nem jelenik meg a statisztika
+Megfelelő jogosultságokkal rendelkező, bejelentkezett felhasználó vagyok | Kiválasztom a felhasználói profil szerkesztése menüpontot | Megjelenik egy form 
+Kiválasztottam egyet a felhasználói célok közül és/vagy megadtam egy rendszeres kiadást/bevételt | Rákattintok a mentésre | A profil adatai a megadottaknek megfelelően frissülnek az adatbázisban
+Bejelentkezett admin vagyok | Kiválasztom a felhasználók kezelése menüpontot | A végrehajtható műveletek listázásra kerülnek
+Kiválasztottam a felhasználó jogosultságainak módosítása opciót | Kiválasztom a felhasználót | Megjelenik egy form
+Megadom az új jogosultságokat | A mentésre kattintok | Az adatbázisban az adott felhasználó adatai a megadottaknak megfelelően frissülnek
+Kiválasztottam a felhasználó törlése menüpontot | Kiválasztom a felhasználót | A felhasználó törlődik az adatbázisból
