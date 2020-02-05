@@ -13,3 +13,6 @@ Megvalósítandó, hogy az alkalmazást csak regisztrált felhasználók haszná
 A tárolt adatok alapján a felhasználók vásárlási szokásairól statisztika készül, mely megmutatja például, mennyi pénzt költött a felhasználó adott idő leforgása alatt, és ez arányaiban hogyan oszlott el a kategóriák között.
 
 Az alkalmazás felhasználói különböző jogosultságokkal rendelkeznek, bizonyos funkciókhoz, például meghatározott statisztikákhoz nem fér hozzá minden felhasználó.
+
+###Use case diagram
+![Use case diagram](https://github.com/szilagyizsofia/financial-assistant/blob/master/Untitled%20Diagram.jpg)
