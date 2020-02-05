@@ -14,5 +14,4 @@ A tárolt adatok alapján a felhasználók vásárlási szokásairól statisztik
 
 Az alkalmazás felhasználói különböző jogosultságokkal rendelkeznek, bizonyos funkciókhoz, például meghatározott statisztikákhoz nem fér hozzá minden felhasználó.
 
-###Use case diagram
 ![Use case diagram](https://github.com/szilagyizsofia/financial-assistant/blob/master/Untitled%20Diagram.jpg)
