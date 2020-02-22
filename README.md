@@ -35,3 +35,11 @@ Bejelentkezett admin vagyok | Kiválasztom a felhasználók kezelése menüponto
 Kiválasztottam a felhasználó jogosultságainak módosítása opciót | Kiválasztom a felhasználót | Megjelenik egy form
 Megadom az új jogosultságokat | A mentésre kattintok | Az adatbázisban az adott felhasználó adatai a megadottaknak megfelelően frissülnek
 Kiválasztottam a felhasználó törlése menüpontot | Kiválasztom a felhasználót | A felhasználó törlődik az adatbázisból
+
+## UI terv
+![Login page](https://github.com/szilagyizsofia/financial-assistant/blob/master/login_page.png)
+![Main page](https://github.com/szilagyizsofia/financial-assistant/blob/master/main_page.png)
+![New income](https://github.com/szilagyizsofia/financial-assistant/blob/master/new_income.png)
+![New spending](https://github.com/szilagyizsofia/financial-assistant/blob/master/new_spending.png)
+![User profile](https://github.com/szilagyizsofia/financial-assistant/blob/master/user_profile.png)
+
