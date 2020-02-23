@@ -43,3 +43,5 @@ Kiválasztottam a felhasználó törlése menüpontot | Kiválasztom a felhaszn�
 ![New spending](https://github.com/szilagyizsofia/financial-assistant/blob/master/new_spending.png)
 ![User profile](https://github.com/szilagyizsofia/financial-assistant/blob/master/user_profile.png)
 
+## UML diagram
+![UML diagram](https://github.com/szilagyizsofia/financial-assistant/blob/master/UML.jpg)
