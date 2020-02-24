@@ -37,11 +37,19 @@ Megadom az új jogosultságokat | A mentésre kattintok | Az adatbázisban az ad
 Kiválasztottam a felhasználó törlése menüpontot | Kiválasztom a felhasználót | A felhasználó törlődik az adatbázisból
 
 ## UI terv
+### Login page
 ![Login page](https://github.com/szilagyizsofia/financial-assistant/blob/master/login_page.png)
+### Main page
 ![Main page](https://github.com/szilagyizsofia/financial-assistant/blob/master/main_page.png)
+### Add new income
 ![New income](https://github.com/szilagyizsofia/financial-assistant/blob/master/new_income.png)
+### Add new spending
 ![New spending](https://github.com/szilagyizsofia/financial-assistant/blob/master/new_spending.png)
+### User profile
 ![User profile](https://github.com/szilagyizsofia/financial-assistant/blob/master/user_profile.png)
 
 ## UML diagram
 ![UML diagram](https://github.com/szilagyizsofia/financial-assistant/blob/master/UML.jpg)
+
+## Adatbázis struktúra terv
+![DB structure](https://github.com/szilagyizsofia/financial-assistant/blob/master/db_structure.png)
