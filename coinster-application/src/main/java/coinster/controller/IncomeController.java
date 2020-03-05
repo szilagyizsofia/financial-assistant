@@ -1,24 +1,23 @@
 package coinster.controller;
 
 import coinster.model.CurrencyUsed;
+import coinster.model.Income;
 import coinster.model.Plan;
 import coinster.model.User;
-import coinster.repository.UserRepository;
+import coinster.repository.IncomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-
 @RestController
-public class UserController {
+public class IncomeController {
 
     @Autowired
-    UserRepository userRepository;
+    IncomeRepository incomeRepository;
 
-    @GetMapping("/createUser")
+    @GetMapping("/createIncome")
     public String create(){
-        userRepository.save(new User("Rajesh01", "Bhojwani", Plan.regular, CurrencyUsed.USD));
+        incomeRepository.save(new Income(new User("Rajesh01", "Bhojwani", Plan.regular, CurrencyUsed.USD), 100, "test income"));
         return "Customer created";
     }
 }

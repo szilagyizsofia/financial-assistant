@@ -1,29 +1,45 @@
 package coinster.model;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "admins")
 public class Admin {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
 
-    public void addUser(User user){
 
+    public Admin(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public List<User> listUsers() {
-        return new ArrayList<User>() {
-        };
+    public int getUserId() {
+        return userId;
     }
 
-    public void deleteUser(User user) {
-
+    public String getUsername() {
+        return username;
     }
 
-    public void changePlan(User user, Plan plan) {
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
