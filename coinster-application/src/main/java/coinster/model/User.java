@@ -1,28 +1,35 @@
 package coinster.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.*;
+import java.io.Serializable;
 
-public class User {
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "plan")
+    @Enumerated(EnumType.STRING)
     private Plan plan;
+
+    @Column(name = "currency")
+    @Enumerated(EnumType.STRING)
     private CurrencyUsed currency;
-    private Map<Integer, Income> incomes = new HashMap<>();
-    private Map<Integer, Spending> spendings = new HashMap<>();
 
-    public void changeCurrency(CurrencyUsed currency) {
+    public User(String username, String password, Plan plan, CurrencyUsed currency) {
+        this.username = username;
+        this.password = password;
+        this.plan = plan;
         this.currency = currency;
-    }
-
-    public void addNewIncome(Income income) {
-        incomes.put(income.getId(), income);
-    }
-
-    public void addNewSpending(Spending spending) {
-        spendings.put(spending.getId(), spending);
     }
 
     public int getUserId() {
@@ -43,21 +50,6 @@ public class User {
 
     public CurrencyUsed getCurrency() {
         return currency;
-    }
-
-    public Map<Integer, Income> getIncomes() {
-        return incomes;
-    }
-
-    public Map<Integer, Spending> getSpendings() {
-        return spendings;
-    }
-
-    public Map<Integer, Transaction> getTransactions() {
-        Map<Integer, Transaction> transactions = new HashMap<>();
-        transactions.putAll(spendings);
-        transactions.putAll(incomes);
-        return transactions;
     }
 
     public void setPassword(String password) {
