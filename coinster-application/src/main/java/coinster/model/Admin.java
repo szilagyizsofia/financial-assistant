@@ -17,6 +17,7 @@ public class Admin {
     @Column(name = "password")
     private String password;
 
+    public Admin() {}
 
     public Admin(String username, String password) {
         this.username = username;

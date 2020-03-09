@@ -22,6 +22,8 @@ public class Income implements Transaction {
     @Column(name = "currency")
     private CurrencyUsed currency;
 
+    public Income() {}
+
     public Income(User owner, int amount, String note) {
         this.owner = owner.getUsername();
         this.amount = amount;

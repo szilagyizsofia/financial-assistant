@@ -26,6 +26,8 @@ public class Spending implements Transaction {
     @Enumerated(EnumType.STRING)
     private SpendingCategory category;
 
+    public Spending() {}
+
     public Spending(User owner, int amount, boolean planned, SpendingCategory category) {
         this.owner = owner.getUsername();
         this.amount = amount;

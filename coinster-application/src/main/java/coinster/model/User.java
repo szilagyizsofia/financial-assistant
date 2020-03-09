@@ -25,6 +25,8 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private CurrencyUsed currency;
 
+    public User() {}
+
     public User(String username, String password, Plan plan, CurrencyUsed currency) {
         this.username = username;
         this.password = password;
