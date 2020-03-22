@@ -1,17 +1,14 @@
 package coinster.controller;
 
 import coinster.model.Admin;
-import coinster.model.User;
 import coinster.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("admins")
 public class AdminController {
 
     @Autowired
@@ -23,15 +20,24 @@ public class AdminController {
         return "Customer created";
     }
 
-    @PostMapping("/createAdmin")
-    public String createAdmin(@RequestBody Admin admin){
+    @PostMapping("/create")
+    public String create(@RequestBody Admin admin) {
         adminRepository.save(admin);
         return "Admin is created";
     }
 
-    @GetMapping("/findallAdmin")
-    public List<Admin> findAllAdmin(){
-        List<Admin> admins = adminRepository.findAll();
-        return admins;
+    @GetMapping("/findall")
+    public List<Admin> findAll() {
+        return adminRepository.findAll();
+    }
+
+    @GetMapping("/findByUser/{username")
+    public Admin findByUsername(@PathVariable String username) {
+        return adminRepository.findByUsername(username);
+    }
+
+    @GetMapping("/findById/{id")
+    public Admin findById(@PathVariable int id) {
+        return adminRepository.findById(id);
     }
 }
