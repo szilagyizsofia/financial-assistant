@@ -17,6 +17,7 @@ public class Spending implements Transaction {
     private int amount;
 
     @Column(name = "currency")
+    @Enumerated(EnumType.STRING)
     private CurrencyUsed currency;
 
     @Column(name = "planned")

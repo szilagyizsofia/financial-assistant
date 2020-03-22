@@ -20,6 +20,7 @@ public class Income implements Transaction {
     private String note;
 
     @Column(name = "currency")
+    @Enumerated(EnumType.STRING)
     private CurrencyUsed currency;
 
     public Income() {}

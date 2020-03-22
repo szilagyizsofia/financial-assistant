@@ -1,6 +1,6 @@
 package coinster.controller;
 
-import coinster.model.*;
+import coinster.model.Spending;
 import coinster.repository.SpendingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +13,6 @@ public class SpendingController {
 
     @Autowired
     SpendingRepository spendingRepository;
-
-    @GetMapping("/testcreateSpending")
-    public String testcreateSpending(){
-        spendingRepository.save(new Spending(new User("Rajesh01", "Bhojwani", Plan.regular, CurrencyUsed.USD), 100, true, SpendingCategory.bills));
-        return "Customer created";
-    }
 
     @PostMapping("/create")
     public String create(@RequestBody Spending spending) {

@@ -14,12 +14,6 @@ public class AdminController {
     @Autowired
     AdminRepository adminRepository;
 
-    @GetMapping("/testcreateAdmin")
-    public String testcreateAdmin(){
-        adminRepository.save(new Admin("Rajesh02", "admin"));
-        return "Customer created";
-    }
-
     @PostMapping("/create")
     public String create(@RequestBody Admin admin) {
         adminRepository.save(admin);
