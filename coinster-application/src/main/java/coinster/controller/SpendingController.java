@@ -1,12 +1,14 @@
 package coinster.controller;
 
 import coinster.model.Spending;
+import coinster.model.Transaction;
 import coinster.repository.SpendingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("spendings")
 public class SpendingController {
@@ -26,7 +28,7 @@ public class SpendingController {
     }
 
     @GetMapping("/findByOwner/{owner}")
-    public List<Spending> findByOwner(@PathVariable String owner) {
+    public List<Transaction> findByOwner(@PathVariable String owner) {
         return spendingRepository.findByOwner(owner);
     }
 

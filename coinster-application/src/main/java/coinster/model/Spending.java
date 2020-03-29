@@ -1,6 +1,7 @@
 package coinster.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "spendings")
@@ -27,6 +28,9 @@ public class Spending implements Transaction {
     @Enumerated(EnumType.STRING)
     private SpendingCategory category;
 
+    @Column(name = "createdAt")
+    private Date createdAt;
+
     public Spending() {}
 
     public Spending(User owner, int amount, boolean planned, SpendingCategory category) {
@@ -35,14 +39,7 @@ public class Spending implements Transaction {
         this.planned = planned;
         this.category = category;
         this.currency = owner.getCurrency();
-    }
-
-    public Spending(User owner, int amount, boolean planned, SpendingCategory category, CurrencyUsed currency) {
-        this.owner = owner.getUsername();
-        this.amount = amount;
-        this.planned = planned;
-        this.category = category;
-        this.currency = currency;
+        this.createdAt = new Date();
     }
 
     @Override
