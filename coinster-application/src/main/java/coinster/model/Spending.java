@@ -11,15 +11,12 @@ public class Spending implements Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "owner")
-    private String owner;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User owner;
 
     @Column(name = "amount")
     private int amount;
-
-    @Column(name = "currency")
-    @Enumerated(EnumType.STRING)
-    private CurrencyUsed currency;
 
     @Column(name = "planned")
     private boolean planned;
@@ -28,19 +25,14 @@ public class Spending implements Transaction {
     @Enumerated(EnumType.STRING)
     private SpendingCategory category;
 
+    @Column(name = "currency")
+    @Enumerated(EnumType.STRING)
+    private CurrencyUsed currency;
+
     @Column(name = "createdAt")
     private Date createdAt;
 
     public Spending() {}
-
-    public Spending(User owner, int amount, boolean planned, SpendingCategory category) {
-        this.owner = owner.getUsername();
-        this.amount = amount;
-        this.planned = planned;
-        this.category = category;
-        this.currency = owner.getCurrency();
-        this.createdAt = new Date();
-    }
 
     @Override
     public int getId() {
@@ -73,11 +65,27 @@ public class Spending implements Transaction {
         this.category = category;
     }
 
-    public String getOwner() {
+    public User getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public CurrencyUsed getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(CurrencyUsed currency) {
+        this.currency = currency;
     }
 }

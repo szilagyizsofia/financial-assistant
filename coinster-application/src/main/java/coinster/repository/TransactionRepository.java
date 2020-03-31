@@ -1,6 +1,7 @@
 package coinster.repository;
 
 import coinster.model.Transaction;
+import coinster.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,7 @@ public class TransactionRepository {
         return transactions;
     }
 
-    public List<Transaction> findByOwner(final String owner) {
+    public List<Transaction> findByOwner(final User owner) {
         List<Transaction> transactions = new ArrayList<Transaction>();
         transactions.addAll(spendingRepository.findByOwner(owner));
         transactions.addAll(incomeRepository.findByOwner(owner));

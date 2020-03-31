@@ -1,7 +1,11 @@
 package coinster.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -11,7 +15,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
-    @Column(name = "username", unique = true)
+    @Column(name = "username")
     private String username;
 
     @Column(name = "password")
@@ -29,14 +33,18 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(mappedBy = "owner")
+    @JsonIgnore
+    private Set<Spending> spendings;
+
     public User() {}
 
-    public User(String username, String password, Plan plan, CurrencyUsed currency, Role role) {
+    public User(String username, String password, Plan plan, CurrencyUsed currency) {
         this.username = username;
         this.password = password;
         this.plan = plan;
         this.currency = currency;
-        this.role = role;
+        this.spendings = new HashSet<>();
     }
 
     public int getUserId() {
@@ -77,6 +85,14 @@ public class User implements Serializable {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Set<Spending> getSpendings() {
+        return spendings;
+    }
+
+    public void setSpendings(Set<Spending> spendings) {
+        this.spendings = spendings;
     }
 }
 

@@ -11,8 +11,9 @@ public class Income implements Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "owner")
-    private String owner;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User owner;
 
     @Column(name = "amount")
     private int amount;
@@ -28,14 +29,6 @@ public class Income implements Transaction {
     private Date createdAt;
 
     public Income() {}
-
-    public Income(User owner, int amount, String note) {
-        this.owner = owner.getUsername();
-        this.amount = amount;
-        this.note = note;
-        this.currency = owner.getCurrency();
-        this.createdAt = new Date();
-    }
 
     @Override
     public int getId() {
@@ -60,12 +53,12 @@ public class Income implements Transaction {
         this.note = note;
     }
 
-    public String getOwner() {
+    public User getOwner() {
         return owner;
     }
 
     public void setOwner(User owner) {
-        this.owner = owner.getUsername();
+        this.owner = owner;
     }
 
     public CurrencyUsed getCurrency() {
@@ -74,5 +67,13 @@ public class Income implements Transaction {
 
     public void setCurrency(CurrencyUsed currency) {
         this.currency = currency;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }
