@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col">
+    <h1 class="display-2">Transactions</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{ transaction.amount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<form (submit)="submit(spendingForm)" #spendingForm="ngForm">
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             name="amount"
+             [(ngModel)]="model.amount"
+             placeholder="Enter amount"
+             required
+             #amount="ngModel">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             name="planned"
+             [(ngModel)]="model.planned"
+             placeholder="Enter wether planned or not"
+             required
+             #planned="ngModel">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             name="category"
+             [(ngModel)]="model.category"
+             placeholder="Enter category"
+             required
+             #category="ngModel">
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button type="submit" color="primary">Register</button>
+</form>

@@ -1,0 +1,51 @@
+<form (submit)="submit(userForm)" #userForm="ngForm">
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             name="username"
+             [(ngModel)]="model.username"
+             placeholder="Enter username"
+             required
+             #username="ngModel">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             name="password"
+             [(ngModel)]="model.password"
+             placeholder="Enter password"
+             required
+             #password="ngModel">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             name="plan"
+             [(ngModel)]="model.plan"
+             placeholder="Enter plan"
+             required
+             #plan="ngModel">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             name="currency"
+             [(ngModel)]="model.currency"
+             placeholder="Enter currency"
+             required
+             #currency="ngModel">
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button type="submit" color="primary">Register</button>
+</form>
