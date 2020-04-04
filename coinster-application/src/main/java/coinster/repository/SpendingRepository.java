@@ -1,6 +1,7 @@
 package coinster.repository;
 
 import coinster.model.Spending;
+import coinster.model.SpendingCategory;
 import coinster.model.Transaction;
 import coinster.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,6 +15,8 @@ public interface SpendingRepository extends JpaRepository<Spending, Integer> {
     List<Transaction> findByOwner(User owner);
 
     Spending findById(int id);
+
+    List<Spending> findByCategoryAndOwner(SpendingCategory category, User owner);
 
     List<Spending> findAll();
 }

@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.time.Month;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,5 +50,31 @@ public class IncomeController {
     @GetMapping("/findById/{id}")
     public Income findById(@PathVariable int id) {
         return incomeRepository.findById(id);
+    }
+
+    @GetMapping("/findThisMonth")
+    public List<Transaction> findThisMonth(Principal principal) {
+        List<Transaction> ret = new ArrayList<>();
+        Month thisMonth = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth();
+        List<Transaction> incomes = incomeRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
+        for (Transaction income : incomes) {
+            if (income.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
+                ret.add(income);
+            }
+        }
+        return ret;
+    }
+
+    @GetMapping("/thisMonthSum")
+    public int thisMonthSum(Principal principal) {
+        int sum = 0;
+        Month thisMonth = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth();
+        List<Transaction> incomes = incomeRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
+        for (Transaction income : incomes) {
+            if (income.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
+                sum += income.getAmount();
+            }
+        }
+        return sum;
     }
 }

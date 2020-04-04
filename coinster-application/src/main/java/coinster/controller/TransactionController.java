@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.time.Month;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -20,13 +24,21 @@ public class TransactionController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/transactions/findall")
-    public List<Transaction> findAll() {
-        return transactionRepository.findAll();
-    }
-
     @GetMapping("/transactions")
     public List<Transaction> findByOwner(Principal principal) {
         return transactionRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
+    }
+
+    @GetMapping("/transactions/findThisMonth")
+    public List<Transaction> findThisMonth(Principal principal) {
+        List<Transaction> ret = new ArrayList<>();
+        Month thisMonth = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth();
+        List<Transaction> transactions = transactionRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
+        for (Transaction transaction : transactions) {
+            if (transaction.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
+                ret.add(transaction);
+            }
+        }
+        return ret;
     }
 }
