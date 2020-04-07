@@ -10,9 +10,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -21,6 +21,9 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { TransactionListComponent } from './transaction-list/transaction-list.component';
 import { IncomeFormComponent } from './income-form/income-form.component';
 import { SpendingFormComponent } from './spending-form/spending-form.component';
+import { SpendingComponent } from './spending/spending.component';
+import { IncomeComponent } from './income/income.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { SpendingFormComponent } from './spending-form/spending-form.component';
     LoginFormComponent,
     TransactionListComponent,
     IncomeFormComponent,
-    SpendingFormComponent
+    SpendingFormComponent,
+    SpendingComponent,
+    IncomeComponent,
+    ProfileComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -45,6 +51,7 @@ import { SpendingFormComponent } from './spending-form/spending-form.component';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatRadioModule,
     BrowserAnimationsModule
   ],
   providers: [],

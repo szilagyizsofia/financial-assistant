@@ -7,6 +7,8 @@ import { UserFormComponent } from '../user-form/user-form.component';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { SpendingFormComponent } from '../spending-form/spending-form.component';
 import { IncomeFormComponent } from '../income-form/income-form.component';
+import { SpendingComponent } from '../spending/spending.component';
+import { IncomeComponent } from '../income/income.component';
 import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
@@ -42,6 +44,14 @@ const routes: Routes = [
     path: 'createIncome',
     component: IncomeFormComponent,
     canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'spendings/:id',
+    component: SpendingComponent
+  },
+  {
+    path: 'incomes/:id',
+    component: IncomeComponent
   }
 ];
 

@@ -1,0 +1,15 @@
+<h1 class="display-2">Spending details</h1>
+<dl class="row">
+  <dt class="col-sm-3">Amount</dt>
+  <dd class="col-sm-9">{{ spending.amount }}</dd>
+
+  <dt class="col-sm-3">Planned</dt>
+  <dd class="col-sm-9">{{ spending.planned }}</dd>
+
+  <dt class="col-sm-3">Category</dt>
+  <dd class="col-sm-9">{{ spending.category }}</dd>
+
+  <dt class="col-sm-3">Date</dt>
+  <dd class="col-sm-9">{{ spending.createdAt }}</dd>
+</dl>
+<button mat-raised-button routerLink="/transactions">Back</button>

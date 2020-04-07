@@ -1,0 +1,12 @@
+<h1 class="display-2">Income details</h1>
+<dl class="row">
+  <dt class="col-sm-3">Amount</dt>
+  <dd class="col-sm-9">{{ income.amount }}</dd>
+
+  <dt class="col-sm-3">Note</dt>
+  <dd class="col-sm-9">{{ income.note }}</dd>
+
+  <dt class="col-sm-3">Date</dt>
+  <dd class="col-sm-9">{{ income.createdAt }}</dd>
+</dl>
+<button mat-raised-button routerLink="/transactions">Back</button>

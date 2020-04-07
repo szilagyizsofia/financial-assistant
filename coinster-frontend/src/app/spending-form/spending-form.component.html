@@ -12,27 +12,31 @@
   </div>
 
   <div class="form-group">
-    <mat-form-field>
-      <input matInput
-             type="text"
-             name="planned"
-             [(ngModel)]="model.planned"
-             placeholder="Enter wether planned or not"
-             required
-             #planned="ngModel">
-    </mat-form-field>
+    <p>How could you best describe this spending?</p>
+    <input type="radio"
+           name="planned"
+           [(ngModel)]="model.planned"
+           value="true">
+    Planned<br />
+    <input type="radio"
+           name="planned"
+           [(ngModel)]="model.planned"
+           value="false">
+    Impulsive
   </div>
 
   <div class="form-group">
-    <mat-form-field>
-      <input matInput
-             type="text"
-             name="category"
-             [(ngModel)]="model.category"
-             placeholder="Enter category"
-             required
-             #category="ngModel">
-    </mat-form-field>
+    <label>Choose the most fitting category for your spending</label>
+    <select name="categories" [(ngModel)]="model.category">
+      <option value="groceries">Groceries</option>
+      <option value="rent">Rent</option>
+      <option value="bills">Bills</option>
+      <option value="eatingout">Eating out</option>
+      <option value="fashion">Fashion</option>
+      <option value="electronics">Electronics</option>
+      <option value="fun">Fun</option>
+      <option value="decor">Decoration</option>
+    </select>
   </div>
 
   <button mat-raised-button type="submit" color="primary">Register</button>

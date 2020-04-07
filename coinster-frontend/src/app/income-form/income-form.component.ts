@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angu
 import { Income } from '../income';
 import { IncomeService } from '../income.service'
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-income-form',
@@ -14,7 +15,10 @@ export class IncomeFormComponent implements OnInit, OnChanges {
   public newIncome: Income = new Income();
   public model: Income = new Income();
 
-  constructor(private incomeService: IncomeService) { }
+  constructor(
+    private incomeService: IncomeService,
+    private router: Router
+  ) { }
 
   ngOnInit() { }
 
@@ -27,6 +31,7 @@ export class IncomeFormComponent implements OnInit, OnChanges {
     this.newIncome.note = this.model.note;
     this.incomeService.createIncome(this.newIncome);
     this.newIncome = null;
+    this.router.navigate(['/transactions']);
   }
 
 }

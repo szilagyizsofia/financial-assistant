@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 export const httpOptions = {
   headers: new HttpHeaders({
@@ -20,7 +21,10 @@ export class AuthService {
 
   private authUrl: string = 'http://localhost:8080/users';
 
-  constructor( private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    ) { }
 
   async login(username: string, password: string): Promise<User> {
     try {
@@ -41,6 +45,7 @@ export class AuthService {
     httpOptions.headers = httpOptions.headers.set('Authorization', ``);
     this.isLoggedIn = false;
     this.user = null;
+    this.router.navigate(['/login']);
   }
 
   getToken() {

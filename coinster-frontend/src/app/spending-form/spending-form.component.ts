@@ -2,6 +2,8 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angu
 import { Spending } from '../spending';
 import { SpendingService } from '../spending.service'
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-spending-form',
@@ -14,7 +16,10 @@ export class SpendingFormComponent implements OnInit, OnChanges {
   public newSpending: Spending = new Spending();
   public model: Spending = new Spending();
 
-  constructor(private spendingService: SpendingService) { }
+  constructor(
+  private spendingService: SpendingService,
+  private router: Router
+  ) { }
 
   ngOnInit() { }
 
@@ -26,8 +31,10 @@ export class SpendingFormComponent implements OnInit, OnChanges {
     this.newSpending.amount = this.model.amount;
     this.newSpending.planned = this.model.planned;
     this.newSpending.category = this.model.category;
+    this.newSpending.createdAt = new Date();
     this.spendingService.createSpending(this.newSpending);
     this.newSpending = null;
+    this.router.navigate(['/transactions']);
   }
 
 }

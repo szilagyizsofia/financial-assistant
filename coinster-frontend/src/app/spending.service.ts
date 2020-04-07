@@ -17,7 +17,8 @@ export class SpendingService {
   public spending: Spending;
   public redirectUrl: string;
 
-  private spendingUrl: string = 'http://localhost:8080/spendings/create'
+  private spendingUrl: string = 'http://localhost:8080/spendings'
+  private getSpendingUrl: string = 'http://localhost:8080/spendings/findall'
 
   constructor(
     private http: HttpClient,
@@ -29,4 +30,12 @@ export class SpendingService {
   createSpending(spending: Spending): Promise<Spending> {
     return this.http.post<Spending>(`${this.spendingUrl}`, spending, httpOptions).toPromise();
   }
+
+  getSpendings(): Promise<Spending[]> {
+    return this.http.get<Spending[]>(`${this.getSpendingUrl}`, httpOptions).toPromise();
+  }
+
+  getSpending(id: number): Promise<Spending> {
+    return this.http.get<Spending>(`${this.spendingUrl}/${id}`, httpOptions).toPromise();
+  } 
 }

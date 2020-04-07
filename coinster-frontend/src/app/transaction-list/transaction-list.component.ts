@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionService} from '../transaction.service';
-import { Transaction } from '../transaction'
+import { IncomeService } from '../income.service';
+import { Income } from '../income';
+import { SpendingService} from '../spending.service';
+import { Spending } from '../spending';
 
 @Component({
   selector: 'app-transaction-list',
@@ -9,12 +11,17 @@ import { Transaction } from '../transaction'
 })
 export class TransactionListComponent implements OnInit {
 
-  public transactions: Transaction[] = [];
+  public incomes: Income[] = [];
+  public spendings: Spending[] = [];
 
-  constructor(private transactionService: TransactionService) { }
+  constructor(
+    private incomeService: IncomeService,
+    private spendingService: SpendingService
+  ) { }
 
   async ngOnInit(): Promise<void> {
-    this.transactions = await this.transactionService.findAll();
+    this.incomes = await this.incomeService.getIncomes();
+    this.spendings = await this.spendingService.getSpendings();
   }
 
   

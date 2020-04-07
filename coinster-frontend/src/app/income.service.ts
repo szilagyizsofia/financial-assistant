@@ -17,7 +17,8 @@ export class IncomeService {
   public income: Income;
   public redirectUrl: string;
 
-  private incomeUrl: string = 'http://localhost:8080/incomes/create'
+  private incomeUrl: string = 'http://localhost:8080/incomes'
+  private getIncomeUrl: string = 'http://localhost:8080/incomes/findall'
 
   constructor(
     private http: HttpClient,
@@ -29,4 +30,12 @@ export class IncomeService {
   createIncome(income: Income): Promise<Income> {
     return this.http.post<Income>(`${this.incomeUrl}`, income, httpOptions).toPromise();
   }
+
+  getIncomes(): Promise<Income[]> {
+    return this.http.get<Income[]>(`${this.getIncomeUrl}`, httpOptions).toPromise();
+  }
+
+  getIncome(id: number): Promise<Income> {
+    return this.http.get<Income>(`${this.incomeUrl}/${id}`, httpOptions).toPromise();
+  } 
 }
