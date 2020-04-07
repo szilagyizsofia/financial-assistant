@@ -28,7 +28,7 @@ public class SpendingController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/create")
+    @PostMapping()
     public ResponseEntity<Spending> create(@RequestBody Spending spending, Principal principal) {
         User owner = userRepository.findByUsername(principal.getName()).get();
         spending.setAmount(0 - spending.getAmount());
@@ -47,7 +47,7 @@ public class SpendingController {
         return spendingRepository.findByOwner(owner);
     }
 
-    @GetMapping("/findById/{id}")
+    @GetMapping("/{id}")
     public Spending findById(@PathVariable int id) {
         return spendingRepository.findById(id);
     }

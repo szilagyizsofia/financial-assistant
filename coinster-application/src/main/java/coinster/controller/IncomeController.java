@@ -27,7 +27,7 @@ public class IncomeController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity<Income> create(@RequestBody Income income, Principal principal) {
         User owner = userRepository.findByUsername(principal.getName()).get();
         income.setOwner(owner);
@@ -47,7 +47,7 @@ public class IncomeController {
         return incomeRepository.findByOwner(owner);
     }
 
-    @GetMapping("/findById/{id}")
+    @GetMapping("/{id}")
     public Income findById(@PathVariable int id) {
         return incomeRepository.findById(id);
     }
