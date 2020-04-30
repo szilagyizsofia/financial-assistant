@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <button mat-button href="/">
-    <mat-icon>home</mat-icon>
-    Coinster
+    COINSTER
+    <mat-icon>toll</mat-icon>
   </button>
 
   <span class="fill-remaining-space" fxHide="false" fxHide.gt-sm></span>
@@ -10,26 +10,11 @@
       <button mat-button routerLink="/transactions">My transactions</button>
       <button mat-button routerLink="/createSpending">New spendings</button>
       <button mat-button routerLink="/createIncome">New incomes</button>
-      <span>Hello, {{ authService.user.username }}!</span>
+      <button mat-button routerLink="/profile">{{ authService.user.username }}</button>
+      <mat-icon routerLink="/profile">face</mat-icon>
       <button mat-button (click)="logout()">Logout</button>
     </div>
-    <div *ngIf="!authService.isLoggedIn">
-      <button mat-button routerLink="/login">Login</button>
-    </div>
   </div>
-  <button mat-icon-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
-    <mat-icon>menu</mat-icon>
-  </button>
 </mat-toolbar>
-<mat-menu xPosition="before" #menu="matMenu">
-  <div *ngIf="authService.isLoggedIn">
-    <button mat-menu-item routerLink="/issues">My issues</button>
-    <button mat-menu-item routerLink="/issues/add">New issues</button>
-    <button mat-menu-item (click)="logout()">Logout</button>
-  </div>
-  <div *ngIf="!authService.isLoggedIn">
-    <button mat-menu-item routerLink="/login">Login</button>
-  </div>
-</mat-menu>
 
 <router-outlet></router-outlet>

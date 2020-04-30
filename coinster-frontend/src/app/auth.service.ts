@@ -20,6 +20,7 @@ export class AuthService {
   public token: string;
 
   private authUrl: string = 'http://localhost:8080/users';
+  private logoutUrl: string = 'http://localhost:8080/users/logout';
 
   constructor(
     private http: HttpClient,
@@ -41,7 +42,7 @@ export class AuthService {
       }
   }
 
-  logout() {
+  async logout() {
     httpOptions.headers = httpOptions.headers.set('Authorization', ``);
     this.isLoggedIn = false;
     this.user = null;

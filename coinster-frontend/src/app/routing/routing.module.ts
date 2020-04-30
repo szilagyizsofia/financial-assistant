@@ -8,7 +8,9 @@ import { LoginFormComponent } from '../login-form/login-form.component';
 import { SpendingFormComponent } from '../spending-form/spending-form.component';
 import { IncomeFormComponent } from '../income-form/income-form.component';
 import { SpendingComponent } from '../spending/spending.component';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { IncomeComponent } from '../income/income.component';
+import { RegularTransactionFormComponent } from '../regular-transaction-form/regular-transaction-form.component';
 import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
@@ -46,12 +48,24 @@ const routes: Routes = [
     canActivate: [ AuthGuard ]
   },
   {
+    path: 'createRegularTransaction',
+    component: RegularTransactionFormComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
     path: 'spendings/:id',
-    component: SpendingComponent
+    component: SpendingComponent,
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'incomes/:id',
-    component: IncomeComponent
+    component: IncomeComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    canActivate: [ AuthGuard ]
   }
 ];
 

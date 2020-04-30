@@ -30,6 +30,7 @@ public class SpendingController {
 
     @PostMapping()
     public ResponseEntity<Spending> create(@RequestBody Spending spending, Principal principal) {
+        System.out.println(principal.getName());
         User owner = userRepository.findByUsername(principal.getName()).get();
         spending.setAmount(0 - spending.getAmount());
         spending.setOwner(owner);
@@ -37,9 +38,9 @@ public class SpendingController {
         return ResponseEntity.ok(spendingRepository.save(spending));
     }
 
-    @GetMapping("/findall")
-    public List<Spending> findAll() {
-        return spendingRepository.findAll();
+    @GetMapping()
+    public List<Transaction> findByOwner(Principal principal) {
+        return spendingRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
     }
 
     @GetMapping("/findByOwner/{owner}")
