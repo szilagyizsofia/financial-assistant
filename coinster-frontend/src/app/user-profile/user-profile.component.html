@@ -1,0 +1,19 @@
+<h1>User Profile</h1>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>Username</td>
+      <td>{{ authService.user.username }}</td>
+    </tr>
+    <tr>
+      <td>CURRENCY</td>
+      <td>{{ authService.user.currency }}</td>
+    </tr>
+    <tr>
+      <td>PLAN</td>
+      <td>{{ authService.user.plan }}</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Regular Transactions</h2>
+<button mat-button routerLink="/createRegularTransaction">New</button>
