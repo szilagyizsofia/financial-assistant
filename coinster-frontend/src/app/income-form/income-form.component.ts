@@ -3,6 +3,7 @@ import { Income } from '../income';
 import { IncomeService } from '../income.service'
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-income-form',
@@ -17,7 +18,8 @@ export class IncomeFormComponent implements OnInit, OnChanges {
 
   constructor(
     private incomeService: IncomeService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit() { }
@@ -31,7 +33,7 @@ export class IncomeFormComponent implements OnInit, OnChanges {
     this.newIncome.note = this.model.note;
     this.incomeService.createIncome(this.newIncome);
     this.newIncome = null;
-    this.router.navigate(['/transactions']);
+    this.router.navigate([`/transactions/${this.authService.user.userId}`]);
   }
 
 }

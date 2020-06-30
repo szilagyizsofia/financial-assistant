@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { Validators, FormBuilder } from '@angular/forms';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login-form',
@@ -34,11 +35,7 @@ export class LoginFormComponent implements OnInit {
     try {
       this.message = null;
       await this.authService.login(this.username.value, this.password.value);
-      if (this.authService.redirectUrl) {
-        this.router.navigate([this.authService.redirectUrl]);
-      } else {
-        this.router.navigate(['/transactions']);
-      }
+      this.router.navigate([`/transactions/${ this.authService.user.userId }`]);
     } catch (e) {
       this.message = 'Cannot log in!';
     }

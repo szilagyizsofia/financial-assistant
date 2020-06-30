@@ -7,7 +7,7 @@
   <span class="fill-remaining-space" fxHide="false" fxHide.gt-sm></span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <div *ngIf="authService.isLoggedIn">
-      <button mat-button routerLink="/transactions">My transactions</button>
+      <button mat-button [routerLink]="['/transactions', authService.user.userId]">My transactions</button>
       <button mat-button routerLink="/createSpending">New spendings</button>
       <button mat-button routerLink="/createIncome">New incomes</button>
       <button mat-button routerLink="/profile">{{ authService.user.username }}</button>

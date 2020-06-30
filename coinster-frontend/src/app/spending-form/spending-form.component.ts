@@ -3,7 +3,7 @@ import { Spending } from '../spending';
 import { SpendingService } from '../spending.service'
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-spending-form',
@@ -18,7 +18,8 @@ export class SpendingFormComponent implements OnInit, OnChanges {
 
   constructor(
   private spendingService: SpendingService,
-  private router: Router
+  private router: Router,
+  private authService: AuthService
   ) { }
 
   ngOnInit() { }
@@ -34,7 +35,7 @@ export class SpendingFormComponent implements OnInit, OnChanges {
     this.newSpending.createdAt = new Date();
     this.spendingService.createSpending(this.newSpending);
     this.newSpending = null;
-    this.router.navigate(['/transactions']);
+    this.router.navigate([`/transactions/${ this.authService.user.userId }`]);
   }
 
 }

@@ -25,7 +25,7 @@ const routes: Routes = [
     canActivate: [ AuthGuard ]
   },
   {
-    path: 'transactions',
+    path: 'transactions/:id',
     component: TransactionListComponent,
     canActivate: [ AuthGuard ]
   },

@@ -42,9 +42,9 @@ public class IncomeController {
         return incomeRepository.findAll();
     }
 
-    @GetMapping("/findByOwner/{owner}")
-    public List<Transaction> findByOwner(@PathVariable User owner) {
-        return incomeRepository.findByOwner(owner);
+    @GetMapping("/findByOwner/{ownerId}")
+    public List<Transaction> findByOwner(@PathVariable int ownerId) {
+        return incomeRepository.findByOwner(userRepository.findById(ownerId).get());
     }
 
     @GetMapping("/{id}")

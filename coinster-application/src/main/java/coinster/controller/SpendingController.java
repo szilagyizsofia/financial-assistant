@@ -43,9 +43,9 @@ public class SpendingController {
         return spendingRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
     }
 
-    @GetMapping("/findByOwner/{owner}")
-    public List<Transaction> findByOwner(@PathVariable User owner) {
-        return spendingRepository.findByOwner(owner);
+    @GetMapping("/findByOwner/{ownerId}")
+    public List<Transaction> findByOwner(@PathVariable int ownerId) {
+        return spendingRepository.findByOwner(userRepository.findById(ownerId).get());
     }
 
     @GetMapping("/{id}")

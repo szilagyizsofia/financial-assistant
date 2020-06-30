@@ -31,10 +31,9 @@ export class AuthService {
     try {
       this.token = btoa(`${username}:${password}`);
       httpOptions.headers = httpOptions.headers.set('Authorization', `Basic ${this.token}`);
-      const user = await this.http.post<User>(`${this.authUrl}/login`, {}, httpOptions).toPromise();
+      this.user = await this.http.post<User>(`${this.authUrl}/login`, {}, httpOptions).toPromise();
       this.isLoggedIn = true;
-      this.user = user;
-      console.log(user);
+      console.log(this.user);
       return Promise.resolve(this.user);
     } catch (e) {
       console.log(e);

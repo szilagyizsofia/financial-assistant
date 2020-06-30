@@ -30,8 +30,8 @@ export class SpendingService {
     return this.http.post<Spending>(`${this.spendingUrl}`, spending, httpOptions).toPromise();
   }
 
-  getSpendings(): Promise<Spending[]> {
-    return this.http.get<Spending[]>(`${this.spendingUrl}`, httpOptions).toPromise();
+  getSpendings(userId: number): Promise<Spending[]> {
+    return this.http.get<Spending[]>(`${this.spendingUrl}/findByOwner/${this.authService.user.userId}`, httpOptions).toPromise();
   }
 
   getSpending(id: number): Promise<Spending> {
