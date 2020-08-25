@@ -36,5 +36,10 @@ export class SpendingService {
 
   getSpending(id: number): Promise<Spending> {
     return this.http.get<Spending>(`${this.spendingUrl}/${id}`, httpOptions).toPromise();
-  } 
+  }
+
+  getThisMonthSpendingSum(id: number): Promise<number> {
+    return this.http.get<number>(`${this.spendingUrl}/thisMonthSum/${this.authService.user.userId}`, httpOptions).toPromise();
+  }
+
 }

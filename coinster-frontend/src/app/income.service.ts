@@ -37,5 +37,9 @@ export class IncomeService {
 
   getIncome(id: number): Promise<Income> {
     return this.http.get<Income>(`${this.incomeUrl}/${id}`, httpOptions).toPromise();
-  } 
+  }
+
+  getThisMonthIncomeSum(id: number): Promise<number> {
+    return this.http.get<number>(`${this.incomeUrl}/thisMonthSum/${this.authService.user.userId}`, httpOptions).toPromise();
+  }
 }

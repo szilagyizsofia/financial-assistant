@@ -26,6 +26,7 @@ import { IncomeComponent } from './income/income.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RegularTransactionFormComponent } from './regular-transaction-form/regular-transaction-form.component';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RegularTransactionFormComponent } from './regular-transaction-form/regu
     IncomeComponent,
     ProfileComponent,
     UserProfileComponent,
-    RegularTransactionFormComponent
+    RegularTransactionFormComponent,
+    OverviewComponent
   ],
   imports: [
     ReactiveFormsModule,

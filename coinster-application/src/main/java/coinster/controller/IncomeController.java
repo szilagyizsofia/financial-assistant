@@ -52,11 +52,11 @@ public class IncomeController {
         return incomeRepository.findById(id);
     }
 
-    @GetMapping("/findThisMonth")
-    public List<Transaction> findThisMonth(Principal principal) {
+    @GetMapping("/findThisMonth/{ownerId}")
+    public List<Transaction> findThisMonth(@PathVariable int ownerId) {
         List<Transaction> ret = new ArrayList<>();
         Month thisMonth = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth();
-        List<Transaction> incomes = incomeRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
+        List<Transaction> incomes = incomeRepository.findByOwner(userRepository.findById(ownerId).get());
         for (Transaction income : incomes) {
             if (income.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
                 ret.add(income);
@@ -65,11 +65,11 @@ public class IncomeController {
         return ret;
     }
 
-    @GetMapping("/thisMonthSum")
-    public int thisMonthSum(Principal principal) {
+    @GetMapping("/thisMonthSum/{ownerId}")
+    public int thisMonthSum(@PathVariable int ownerId) {
         int sum = 0;
         Month thisMonth = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth();
-        List<Transaction> incomes = incomeRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
+        List<Transaction> incomes = incomeRepository.findByOwner(userRepository.findById(ownerId).get());
         for (Transaction income : incomes) {
             if (income.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
                 sum += income.getAmount();

@@ -38,11 +38,6 @@ public class SpendingController {
         return ResponseEntity.ok(spendingRepository.save(spending));
     }
 
-    @GetMapping()
-    public List<Transaction> findByOwner(Principal principal) {
-        return spendingRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
-    }
-
     @GetMapping("/findByOwner/{ownerId}")
     public List<Transaction> findByOwner(@PathVariable int ownerId) {
         return spendingRepository.findByOwner(userRepository.findById(ownerId).get());
@@ -58,11 +53,11 @@ public class SpendingController {
         return spendingRepository.findByCategoryAndOwner(category, userRepository.findByUsername(principal.getName()).get());
     }
 
-    @GetMapping("/findByCategoryThisMonth/{category}")
-    public List<Spending> findByCategoryThisMonth(@PathVariable SpendingCategory category, Principal principal) {
+    @GetMapping("/findByCategoryThisMonth/{ownerId}/{category}")
+    public List<Spending> findByCategoryThisMonth(@PathVariable SpendingCategory category, @PathVariable int ownerId) {
         List<Spending> ret = new ArrayList<>();
         Month thisMonth = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth();
-        List<Spending> spendings = spendingRepository.findByCategoryAndOwner(category, userRepository.findByUsername(principal.getName()).get());
+        List<Spending> spendings = spendingRepository.findByCategoryAndOwner(category, userRepository.findById(ownerId).get());
         for (Spending spending : spendings) {
             if (spending.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
                 ret.add(spending);
@@ -71,11 +66,11 @@ public class SpendingController {
         return ret;
     }
 
-    @GetMapping("/thisMonthSumByCategory/{category}")
-    public int thisMonthSum(@PathVariable SpendingCategory category, Principal principal) {
+    @GetMapping("/thisMonthSumByCategory/{ownerId}/{category}")
+    public int thisMonthSum(@PathVariable SpendingCategory category, @PathVariable int ownerId) {
         int sum = 0;
         Month thisMonth = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth();
-        List<Spending> spendings = spendingRepository.findByCategoryAndOwner(category, userRepository.findByUsername(principal.getName()).get());
+        List<Spending> spendings = spendingRepository.findByCategoryAndOwner(category, userRepository.findById(ownerId).get());
         for (Spending spending : spendings) {
             if (spending.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
                 sum += spending.getAmount();
@@ -84,11 +79,11 @@ public class SpendingController {
         return sum;
     }
 
-    @GetMapping("/thisMonthSum")
-    public int thisMonthSum(Principal principal) {
+    @GetMapping("/thisMonthSum/{ownerId}")
+    public int thisMonthSum(@PathVariable int ownerId) {
         int sum = 0;
         Month thisMonth = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth();
-        List<Transaction> spendings = spendingRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
+        List<Transaction> spendings = spendingRepository.findByOwner(userRepository.findById(ownerId).get());
         for (Transaction spending : spendings) {
             if (spending.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
                 sum += spending.getAmount();

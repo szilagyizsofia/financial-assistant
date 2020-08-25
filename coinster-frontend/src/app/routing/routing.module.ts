@@ -10,13 +10,14 @@ import { IncomeFormComponent } from '../income-form/income-form.component';
 import { SpendingComponent } from '../spending/spending.component';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { IncomeComponent } from '../income/income.component';
+import { OverviewComponent } from '../overview/overview.component';
 import { RegularTransactionFormComponent } from '../regular-transaction-form/regular-transaction-form.component';
 import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/transactions',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
@@ -60,6 +61,11 @@ const routes: Routes = [
   {
     path: 'incomes/:id',
     component: IncomeComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'overview',
+    component: OverviewComponent,
     canActivate: [ AuthGuard ]
   },
   {
