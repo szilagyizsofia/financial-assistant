@@ -3,9 +3,8 @@
 {{incomeSum}}
 <h2>Spending</h2>
 {{spendingSum}}
-<div id="chartdiv">
-  <canvas id="pie-chart" width="400" height="400"></canvas>
+<div *ngIf="authService.isPremium">
+  <div id="chartdiv">
+    <canvas id="pie-chart" width="400" height="400"></canvas>
+  </div>
 </div>
-<h2>Remaining</h2>
-
-

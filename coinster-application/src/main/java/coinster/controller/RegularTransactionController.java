@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,8 +33,38 @@ public class RegularTransactionController {
         return ResponseEntity.ok(regularTransactionRepository.save(regularTransaction));
     }
 
+    @GetMapping("/{id}")
+    public RegularTransaction findById(@PathVariable int id) {
+        return regularTransactionRepository.findById(id);
+    }
+
     @GetMapping("/findByOwner/{owner}")
     public List<RegularTransaction> findByOwner(@PathVariable User owner) {
         return regularTransactionRepository.findByOwner(owner);
     }
+
+    @GetMapping("/spendings")
+    public List<RegularTransaction> getRegularSpendings(@PathVariable User owner) {
+        List<RegularTransaction> regularSpendings = new ArrayList<>();
+        List<RegularTransaction> transactions = regularTransactionRepository.findByOwner(owner);
+        for( RegularTransaction transaction : transactions ) {
+            if ( transaction.getAmount() < 0 ) {
+                regularSpendings.add(transaction);
+            }
+        }
+        return regularSpendings;
+    }
+
+    @GetMapping("/incomes")
+    public List<RegularTransaction> getRegularIncomes(@PathVariable User owner) {
+        List<RegularTransaction> regularIncomes = new ArrayList<>();
+        List<RegularTransaction> transactions = regularTransactionRepository.findByOwner(owner);
+        for( RegularTransaction transaction : transactions ) {
+            if ( transaction.getAmount() > 0 ) {
+                regularIncomes.add(transaction);
+            }
+        }
+        return regularIncomes;
+    }
+
 }

@@ -15,5 +15,16 @@
     </tr>
   </tbody>
 </table>
-<h2>Regular Transactions</h2>
-<button mat-button routerLink="/createRegularTransaction">New</button>
+<div *ngIf="authService.isPremium">
+  <h2>Regular Transactions</h2>
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let regularTransaction of regularTransactions">
+        <td>{{ regularTransaction.amount }}</td>
+        <td><a [routerLink]="['/regularTransactions', regularTransaction.id]">Details</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <button mat-button routerLink="/createRegularTransaction">New</button>
+</div>
+

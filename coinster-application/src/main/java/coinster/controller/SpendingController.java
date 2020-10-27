@@ -1,9 +1,7 @@
 package coinster.controller;
 
-import coinster.model.Spending;
-import coinster.model.SpendingCategory;
-import coinster.model.Transaction;
-import coinster.model.User;
+import coinster.model.*;
+import coinster.repository.RegularTransactionRepository;
 import coinster.repository.SpendingRepository;
 import coinster.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,9 @@ public class SpendingController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RegularTransactionRepository regularTransactionRepository;
 
     @PostMapping()
     public ResponseEntity<Spending> create(@RequestBody Spending spending, Principal principal) {
@@ -87,6 +88,12 @@ public class SpendingController {
         for (Transaction spending : spendings) {
             if (spending.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
                 sum += spending.getAmount();
+            }
+        }
+        List<RegularTransaction> regularTransactions = regularTransactionRepository.findByOwner(userRepository.findById(ownerId).get());
+        for (RegularTransaction regularTransaction : regularTransactions) {
+            if (regularTransaction.getAmount() < 0) {
+                sum += regularTransaction.getAmount();
             }
         }
         return sum;

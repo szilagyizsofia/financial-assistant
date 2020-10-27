@@ -38,6 +38,10 @@ public class RegularTransaction implements Transaction {
         return amount;
     }
 
+    public String getNote() {
+        return note;
+    }
+
     @Override
     public Date getCreatedAt() {
         return createdAt;
@@ -46,6 +50,10 @@ public class RegularTransaction implements Transaction {
     @Override
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public void setOwner(User owner) {

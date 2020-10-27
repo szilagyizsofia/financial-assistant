@@ -12,6 +12,7 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { IncomeComponent } from '../income/income.component';
 import { OverviewComponent } from '../overview/overview.component';
 import { RegularTransactionFormComponent } from '../regular-transaction-form/regular-transaction-form.component';
+import { RegularTransactionComponent } from '../regular-transaction/regular-transaction.component';
 import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
@@ -61,6 +62,11 @@ const routes: Routes = [
   {
     path: 'incomes/:id',
     component: IncomeComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'regularTransactions/:id',
+    component: RegularTransactionComponent,
     canActivate: [ AuthGuard ]
   },
   {

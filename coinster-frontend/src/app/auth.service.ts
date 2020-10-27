@@ -15,6 +15,8 @@ export const httpOptions = {
 })
 export class AuthService {
   public isLoggedIn: boolean = false;
+  public isAdmin: boolean = false;
+  public isPremium: boolean = false;
   public user: User;
   public redirectUrl: string;
   public token: string;
@@ -33,6 +35,12 @@ export class AuthService {
       httpOptions.headers = httpOptions.headers.set('Authorization', `Basic ${this.token}`);
       this.user = await this.http.post<User>(`${this.authUrl}/login`, {}, httpOptions).toPromise();
       this.isLoggedIn = true;
+      if(this.user.role == 'ADMIN') {
+        this.isAdmin = true;
+      }
+      if(this.user.plan == 'premium') {
+        this.isPremium = true;
+      }
       console.log(this.user);
       return Promise.resolve(this.user);
     } catch (e) {
@@ -44,6 +52,8 @@ export class AuthService {
   async logout() {
     httpOptions.headers = httpOptions.headers.set('Authorization', ``);
     this.isLoggedIn = false;
+    this.isAdmin = false;
+    this.isPremium = false;
     this.user = null;
     this.router.navigate(['/login']);
   }

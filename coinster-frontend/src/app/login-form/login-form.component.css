@@ -1,0 +1,13 @@
+h1 {
+    text-align: center;
+    padding: 5%;
+    font-size: 10vw;
+}
+body {
+  text-align: center;
+}
+#form {
+  width: 50%;
+  text-align: center;
+  display: inline-block;
+}

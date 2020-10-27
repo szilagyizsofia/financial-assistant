@@ -15,11 +15,14 @@ public class TransactionRepository {
     SpendingRepository spendingRepository;
     @Autowired
     IncomeRepository incomeRepository;
+    @Autowired
+    RegularTransactionRepository regularTransactionRepository;
 
     public List<Transaction> findAll() {
         List<Transaction> transactions = new ArrayList<Transaction>();
         transactions.addAll(spendingRepository.findAll());
         transactions.addAll(incomeRepository.findAll());
+        transactions.addAll(regularTransactionRepository.findAll());
         return transactions;
     }
 

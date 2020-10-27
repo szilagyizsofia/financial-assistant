@@ -1,1 +1,39 @@
-<p>regular-transaction-form works!</p>
+<form (submit)="submit(regularTransactionForm)" #regularTransactionForm="ngForm">
+
+  <div class="form-group">
+    <input type="radio"
+           name="spending"
+           [(ngModel)]="spending"
+           value="true">
+    Spending<br />
+    <input type="radio"
+           name="spending"
+           [(ngModel)]="spending"
+           value="false">
+    Income
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             name="amount"
+             [(ngModel)]="model.amount"
+             placeholder="Enter amount"
+             required
+             #amount="ngModel">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <textarea matInput
+                name="note"
+                [(ngModel)]="model.note"
+                aria-describedby="descriptionHelp"
+                placeholder="Enter notes">
+        </textarea>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button type="submit" color="primary">Register</button>

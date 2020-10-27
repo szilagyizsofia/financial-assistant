@@ -1,3 +1,7 @@
+<h1>COINSTER</h1>
+
+<body>
+  <div id="form">
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <div *ngIf="message">
@@ -21,3 +25,5 @@
     <a [routerLink]="['/register']">Not a user yet? Register now for free!</a>
 </div>
 </form>
+    </div>
+</body>

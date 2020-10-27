@@ -1,6 +1,8 @@
 package coinster.controller;
 
 import coinster.model.Transaction;
+import coinster.model.RegularTransaction;
+import coinster.repository.RegularTransactionRepository;
 import coinster.repository.TransactionRepository;
 import coinster.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class TransactionController {
     TransactionRepository transactionRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    RegularTransactionRepository regularTransactionRepository;
 
     @GetMapping("/transactions")
     public List<Transaction> findByOwner(Principal principal) {
@@ -38,6 +42,10 @@ public class TransactionController {
             if (transaction.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
                 ret.add(transaction);
             }
+        }
+        List<RegularTransaction> regularTransactions = regularTransactionRepository.findByOwner(userRepository.findByUsername(principal.getName()).get());
+        for (RegularTransaction regularTransaction : regularTransactions) {
+            ret.add(regularTransaction);
         }
         return ret;
     }

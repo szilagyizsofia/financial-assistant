@@ -35,7 +35,12 @@ export class LoginFormComponent implements OnInit {
     try {
       this.message = null;
       await this.authService.login(this.username.value, this.password.value);
-      this.router.navigate([`/transactions/${ this.authService.user.userId }`]);
+      if(this.authService.user.role == 'BASIC') {
+        this.router.navigate([`/transactions/${ this.authService.user.userId }`]);
+      }
+      else if(this.authService.user.role == 'ADMIN') {
+        this.router.navigate([`/users`])
+      }
     } catch (e) {
       this.message = 'Cannot log in!';
     }

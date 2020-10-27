@@ -1,9 +1,11 @@
 package coinster.controller;
 
 import coinster.model.Income;
+import coinster.model.RegularTransaction;
 import coinster.model.Transaction;
 import coinster.model.User;
 import coinster.repository.IncomeRepository;
+import coinster.repository.RegularTransactionRepository;
 import coinster.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,9 @@ public class IncomeController {
 
     @Autowired
     IncomeRepository incomeRepository;
+
+    @Autowired
+    RegularTransactionRepository regularTransactionRepository;
 
     @Autowired
     UserRepository userRepository;
@@ -73,6 +78,12 @@ public class IncomeController {
         for (Transaction income : incomes) {
             if (income.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth() == thisMonth) {
                 sum += income.getAmount();
+            }
+        }
+        List<RegularTransaction> regularTransactions = regularTransactionRepository.findByOwner(userRepository.findById(ownerId).get());
+        for (RegularTransaction regularTransaction : regularTransactions) {
+            if (regularTransaction.getAmount() > 0) {
+                sum += regularTransaction.getAmount();
             }
         }
         return sum;

@@ -3,6 +3,7 @@ import { Chart } from 'node_modules/chart.js';
 import { SpendingService } from '../spending.service';
 import { IncomeService } from '../income.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-overview',
@@ -18,7 +19,8 @@ export class OverviewComponent implements OnInit {
   constructor(
     private spendingService: SpendingService,
     private incomeService: IncomeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public authService: AuthService
   ) { }
 
   async ngOnInit(): Promise<void> {
