@@ -1,18 +1,19 @@
+<h1 class="display-2">Register new spending</h1>
 <form (submit)="submit(spendingForm)" #spendingForm="ngForm">
   <div class="form-group">
+    <h3>Enter the amount of money spent</h3>
     <mat-form-field>
       <input matInput
              type="text"
              name="amount"
              [(ngModel)]="model.amount"
-             placeholder="Enter amount"
              required
              #amount="ngModel">
     </mat-form-field>
   </div>
 
   <div class="form-group">
-    <p>How could you best describe this spending?</p>
+    <h3>How could you best describe this spending?</h3>
     <input type="radio"
            name="planned"
            [(ngModel)]="model.planned"
@@ -26,7 +27,7 @@
   </div>
 
   <div class="form-group">
-    <label>Choose the most fitting category for your spending</label>
+    <h3>Choose the most fitting category for your spending</h3>
     <select name="categories" [(ngModel)]="model.category">
       <option value="groceries">Groceries</option>
       <option value="rent">Rent</option>

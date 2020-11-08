@@ -30,16 +30,19 @@ export class IncomeService {
     return this.http.post<Income>(`${this.incomeUrl}`, income, httpOptions).toPromise();
   }
 
-  getIncomes(userId: number): Promise<Income[]> {
-    console.log(userId);
-    return this.http.get<Income[]>(`${this.incomeUrl}/findByOwner/${userId}`, httpOptions).toPromise();
+  deleteIncome(id): Promise<Income> {
+    return this.http.delete<Income>(`${this.incomeUrl}/${id}`, httpOptions).toPromise();
+  }
+
+  getIncomes(): Promise<Income[]> {
+    return this.http.get<Income[]>(`${this.incomeUrl}/findByOwner/${this.authService.user.userId}`, httpOptions).toPromise();
   }
 
   getIncome(id: number): Promise<Income> {
     return this.http.get<Income>(`${this.incomeUrl}/${id}`, httpOptions).toPromise();
   }
 
-  getThisMonthIncomeSum(id: number): Promise<number> {
+  getThisMonthIncomeSum(): Promise<number> {
     return this.http.get<number>(`${this.incomeUrl}/thisMonthSum/${this.authService.user.userId}`, httpOptions).toPromise();
   }
 }

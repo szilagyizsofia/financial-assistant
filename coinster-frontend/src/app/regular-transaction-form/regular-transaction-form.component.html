@@ -1,6 +1,8 @@
-<form (submit)="submit(regularTransactionForm)" #regularTransactionForm="ngForm">
+<h1 class="display-2">Register regular transaction</h1>
 
+<form (submit)="submit(regularTransactionForm)" #regularTransactionForm="ngForm">
   <div class="form-group">
+    <h3>What kind of transaction would you like to register?</h3>
     <input type="radio"
            name="spending"
            [(ngModel)]="spending"
@@ -14,12 +16,12 @@
   </div>
 
   <div class="form-group">
+    <h3>Enter amount of regular transaction</h3>
     <mat-form-field>
       <input matInput
              type="text"
              name="amount"
              [(ngModel)]="model.amount"
-             placeholder="Enter amount"
              required
              #amount="ngModel">
     </mat-form-field>
@@ -27,11 +29,11 @@
 
   <div class="form-group">
     <mat-form-field>
+      <h3>Enter any notes regarding this regular transaction</h3>
       <textarea matInput
                 name="note"
                 [(ngModel)]="model.note"
-                aria-describedby="descriptionHelp"
-                placeholder="Enter notes">
+                aria-describedby="descriptionHelp">
         </textarea>
     </mat-form-field>
   </div>

@@ -1,10 +1,28 @@
-<h1>Overview for this month</h1>
-<h2>Income</h2>
-{{incomeSum}}
-<h2>Spending</h2>
-{{spendingSum}}
-<div *ngIf="authService.isPremium">
-  <div id="chartdiv">
-    <canvas id="pie-chart" width="400" height="400"></canvas>
+<h1 class="display-2">Overview for this month</h1>
+<table class="table">
+  <tr>
+    <td><h3>SPENDING:</h3></td>
+    <td>{{spendingSum}}</td>
+  </tr>
+  <tr>
+    <td><h3>INCOME:</h3></td>
+    <td>{{incomeSum}}</td>
+  </tr>
+  <tr>
+    <td><h3>REMAINING:</h3></td>
+    <td>{{spendingSum - incomeSum}}</td>
+  </tr>
+</table>
+  <div *ngIf="authService.isPremium">
+    <div id="chartdiv">
+      <table class="table">
+        <tr>
+          <td><canvas id="spending-income-pie-chart"></canvas></td>
+          <td><canvas id="spending-planned-pie-chart"></canvas></td>
+        </tr>
+        <tr>
+          <td colspan="2"><canvas id="spending-categories-pie-chart"></canvas></td>
+        </tr>
+      </table>
+    </div>
   </div>
-</div>

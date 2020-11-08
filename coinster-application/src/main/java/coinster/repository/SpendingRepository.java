@@ -16,6 +16,8 @@ public interface SpendingRepository extends JpaRepository<Spending, Integer> {
 
     Spending findById(int id);
 
+    List<Spending> findByPlannedAndOwner(boolean planned, User owner);
+
     List<Spending> findByCategoryAndOwner(SpendingCategory category, User owner);
 
     List<Spending> findAll();

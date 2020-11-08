@@ -1,23 +1,24 @@
+<h1 class="display-2">Register new income</h1>
 <form (submit)="submit(incomeForm)" #incomeForm="ngForm">
   <div class="form-group">
+    <h3>Enter amount of received money</h3>
     <mat-form-field>
       <input matInput
              type="text"
              name="amount"
              [(ngModel)]="model.amount"
-             placeholder="Enter amount"
              required
              #amount="ngModel">
     </mat-form-field>
   </div>
 
   <div class="form-group">
+    <h3>Enter any notes regarding this income</h3>
     <mat-form-field>
       <textarea matInput
                 name="note"
                 [(ngModel)]="model.note"
-                aria-describedby="descriptionHelp"
-                placeholder="Enter notes">
+                aria-describedby="descriptionHelp">
         </textarea>
     </mat-form-field>
   </div>

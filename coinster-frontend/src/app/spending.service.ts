@@ -30,7 +30,11 @@ export class SpendingService {
     return this.http.post<Spending>(`${this.spendingUrl}`, spending, httpOptions).toPromise();
   }
 
-  getSpendings(userId: number): Promise<Spending[]> {
+  deleteSpending(id): Promise<Spending> {
+    return this.http.delete<Spending>(`${this.spendingUrl}/${id}`, httpOptions).toPromise();
+  }
+
+  getSpendings(): Promise<Spending[]> {
     return this.http.get<Spending[]>(`${this.spendingUrl}/findByOwner/${this.authService.user.userId}`, httpOptions).toPromise();
   }
 
@@ -38,8 +42,16 @@ export class SpendingService {
     return this.http.get<Spending>(`${this.spendingUrl}/${id}`, httpOptions).toPromise();
   }
 
-  getThisMonthSpendingSum(id: number): Promise<number> {
+  getThisMonthSpendingSum(): Promise<number> {
     return this.http.get<number>(`${this.spendingUrl}/thisMonthSum/${this.authService.user.userId}`, httpOptions).toPromise();
+  }
+
+  getThisMonthSpendingByCategory(category: string): Promise<number> {
+    return this.http.get<number>(`${this.spendingUrl}/thisMonthSumByCategory/${this.authService.user.userId}/${category}`, httpOptions).toPromise();
+  }
+
+  getThisMontSpendingByPlanned(planned: boolean): Promise<number> {
+    return this.http.get<number>(`${this.spendingUrl}/thisMonthSumByPlanned/${this.authService.user.userId}/${planned}`, httpOptions).toPromise();
   }
 
 }

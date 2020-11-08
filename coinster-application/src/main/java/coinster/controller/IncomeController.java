@@ -17,6 +17,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -39,6 +40,17 @@ public class IncomeController {
         income.setCurrency(owner.getCurrency());
         income.setCreatedAt(new Date());
         return ResponseEntity.ok(incomeRepository.save(income));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Integer id) {
+        Optional<Income> income = incomeRepository.findById(id);
+        if (income.isPresent()) {
+            incomeRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 

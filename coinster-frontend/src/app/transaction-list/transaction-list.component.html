@@ -1,21 +1,19 @@
 <div class="row">
   <div class="col">
     <h1 class="display-2">Transactions</h1>
-    <h2>Spendings</h2>
     <table class="table">
       <tbody>
+        <tr><td><h2>Spendings</h2></td></tr>
         <tr *ngFor="let spending of spendings">
           <td>{{ spending.amount }}</td>
           <td><a [routerLink]="['/spendings', spending.id]">Details</a></td>
+          <td><button mat-raised-button color="primary" (click)="onSpendingDeleteClick(spending.id)">Delete</button></td>
         </tr>
-      </tbody>
-    </table>
-    <h2>Incomes</h2>
-    <table class="table">
-      <tbody>
+        <tr><td><h2>Incomes</h2></td></tr>
         <tr *ngFor="let income of incomes">
           <td>{{ income.amount }}</td>
           <td><a [routerLink]="['/incomes', income.id]">Details</a></td>
+          <td><button mat-raised-button color="primary" (click)="onIncomeDeleteClick(income.id)">Delete</button></td>
         </tr>
       </tbody>
     </table>

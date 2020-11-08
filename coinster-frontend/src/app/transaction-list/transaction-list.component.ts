@@ -25,10 +25,22 @@ export class TransactionListComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userId = id;
-    this.incomes = await this.incomeService.getIncomes(this.userId);
-    this.spendings = await this.spendingService.getSpendings(this.userId);
+    this.incomes = await this.incomeService.getIncomes();
+    this.spendings = await this.spendingService.getSpendings();
   }
 
-  
+  onSpendingDeleteClick(id: number) {
+    this.spendingService.deleteSpending(id)
+    .then(async () => {
+      this.spendings = await this.spendingService.getSpendings();
+    })
+  }
+
+  onIncomeDeleteClick(id: number) {
+    this.incomeService.deleteIncome(id)
+    .then(async () => {
+      this.incomes = await this.incomeService.getIncomes();
+    })
+  }
 
 }
