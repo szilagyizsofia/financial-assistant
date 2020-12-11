@@ -3,14 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\income-form",
+    "\\src\\app\\login-form",
     "\\src\\app\\overview",
-    "\\src\\app\\regular-transaction",
     "\\src\\app\\regular-transaction-form",
-    "\\src\\app\\user-form",
-    "\\src\\app\\user-profile",
+    "\\src\\app\\transaction-list",
+    "\\src\\app\\user-list",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\app.component.css",
+  "SelectedNode": "\\src\\app\\transaction-list\\transaction-list.component.ts",
   "PreviewInSolutionExplorer": false
 }

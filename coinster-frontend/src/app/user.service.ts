@@ -17,4 +17,12 @@ export class UserService {
   findAll(): Promise<User[]> {
     return this.http.get<User[]>(`${this.userUrl}`, httpOptions).toPromise();
   }
+
+  deleteUser(id): Promise<User> {
+    return this.http.delete<User>(`${this.userUrl}/${id}`, httpOptions).toPromise();
+  }
+
+  changePlan(id): Promise<User> {
+    return this.http.get<User>(`${this.userUrl}/changePlan/${id}`, httpOptions).toPromise();
+  }
 }

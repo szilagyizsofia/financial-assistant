@@ -42,6 +42,17 @@ public class UserController {
         return ResponseEntity.ok(userRepository.save(user));
     }
 
+    @DeleteMapping("users/{id}")
+    public ResponseEntity delete(@PathVariable Integer id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            userRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("users/logout")
     public ResponseEntity<String> logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -68,17 +79,17 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}/changePlan")
-    public String upgradePlan(@PathVariable int id) {
-        User user = userRepository.findById(id).get();
-        Plan plan;
-        if (user.getPlan().equals(Plan.premium)) {
-            user.setPlan(Plan.regular);
-            plan = Plan.regular;
-        } else {
-            user.setPlan(Plan.premium);
-            plan = Plan.premium;
+    public ResponseEntity changePlan(@PathVariable int id) {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) {
+            return ResponseEntity.notFound().build();
         }
-        return "User: " + user.getUsername() + ", plan changed to: " + plan;
+        if (user.get().getPlan().equals(Plan.premium)) {
+            user.get().setPlan(Plan.regular);
+        } else {
+            user.get().setPlan(Plan.premium);
+        }
+        return ResponseEntity.ok().build();
     }
 
 }

@@ -17,6 +17,18 @@ export class UserListComponent implements OnInit {
     this.users = await this.userService.findAll();
   }
 
-  
+  onDeleteClick(id: number) {
+    this.userService.deleteUser(id)
+    .then(async () => {
+      this.users = await this.userService.findAll();
+    })
+  }
+
+  onChangePlan(id: number) {
+    this.userService.changePlan(id)
+    .then(async () => {
+      this.users = await this.userService.findAll();
+    })
+  }
 
 }

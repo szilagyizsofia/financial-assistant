@@ -27,7 +27,7 @@ public class TransactionRepository {
     }
 
     public List<Transaction> findByOwner(final User owner) {
-        List<Transaction> transactions = new ArrayList<Transaction>();
+        List<Transaction> transactions = new ArrayList<>();
         transactions.addAll(spendingRepository.findByOwner(owner));
         transactions.addAll(incomeRepository.findByOwner(owner));
         return transactions;

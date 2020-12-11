@@ -9,6 +9,8 @@
           <th scope="col">Plan</th>
           <th scope="col">Currency</th>
           <th scope="col">Role</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +20,8 @@
           <td>{{ user.plan }}</td>
           <td>{{ user.currency }}</td>
           <td>{{ user.role }}</td>
+          <td><button mat-raised-button color="primary" (click)="onChangePlan(user.userId)">Change Plan</button></td>
+          <td><button mat-raised-button color="primary" (click)="onDeleteClick(user.userId)">Delete</button></td>
         </tr>
       </tbody>
     </table>

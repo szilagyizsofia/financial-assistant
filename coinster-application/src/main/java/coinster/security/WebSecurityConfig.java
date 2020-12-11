@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -26,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/users/create").permitAll()   // important!
+                .antMatchers("/**").permitAll()   // important!
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
@@ -36,10 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .frameOptions().disable()
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and();
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
-
     @Autowired
     protected void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth

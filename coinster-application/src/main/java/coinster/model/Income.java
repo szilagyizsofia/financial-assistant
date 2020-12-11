@@ -1,5 +1,6 @@
 package coinster.model;
 
+
 import javax.persistence.*;
 import java.util.Date;
 
