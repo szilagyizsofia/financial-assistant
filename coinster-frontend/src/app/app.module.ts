@@ -23,7 +23,6 @@ import { IncomeFormComponent } from './income-form/income-form.component';
 import { SpendingFormComponent } from './spending-form/spending-form.component';
 import { SpendingComponent } from './spending/spending.component';
 import { IncomeComponent } from './income/income.component';
-import { ProfileComponent } from './profile/profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RegularTransactionFormComponent } from './regular-transaction-form/regular-transaction-form.component';
 import { OverviewComponent } from './overview/overview.component';
@@ -40,7 +39,6 @@ import { RegularTransactionComponent } from './regular-transaction/regular-trans
     SpendingFormComponent,
     SpendingComponent,
     IncomeComponent,
-    ProfileComponent,
     UserProfileComponent,
     RegularTransactionFormComponent,
     OverviewComponent,

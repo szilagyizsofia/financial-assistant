@@ -78,18 +78,21 @@ public class UserController {
         return userRepository.findByUsername(username);
     }
 
-    @GetMapping("/users/{id}/changePlan")
-    public ResponseEntity changePlan(@PathVariable int id) {
-        Optional<User> user = userRepository.findById(id);
-        if (!user.isPresent()) {
+    @PutMapping("/users/{id}/changePlan")
+    public ResponseEntity<User> changePlan(@PathVariable Integer id) {
+        Optional<User> oUser = userRepository.findById(id);
+        if (oUser.isPresent()) {
+            User user = oUser.get();
+            if (user.getPlan().equals(Plan.premium)) {
+                user.setPlan(Plan.regular);
+            }
+            else {
+                user.setPlan(Plan.premium);
+            }
+            return ResponseEntity.ok(userRepository.save(user));
+        } else {
             return ResponseEntity.notFound().build();
         }
-        if (user.get().getPlan().equals(Plan.premium)) {
-            user.get().setPlan(Plan.regular);
-        } else {
-            user.get().setPlan(Plan.premium);
-        }
-        return ResponseEntity.ok().build();
     }
 
 }

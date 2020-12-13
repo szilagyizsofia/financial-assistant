@@ -23,6 +23,6 @@ export class UserService {
   }
 
   changePlan(id): Promise<User> {
-    return this.http.get<User>(`${this.userUrl}/changePlan/${id}`, httpOptions).toPromise();
+    return this.http.put<User>(`${this.userUrl}/${id}/changePlan`, httpOptions).toPromise();
   }
 }

@@ -29,6 +29,7 @@ export class UserListComponent implements OnInit {
     .then(async () => {
       this.users = await this.userService.findAll();
     })
+    console.log('changed');
   }
 
 }
