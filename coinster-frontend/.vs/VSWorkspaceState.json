@@ -5,8 +5,9 @@
     "\\src\\app",
     "\\src\\app\\routing",
     "\\src\\app\\user-form",
+    "\\src\\app\\user-list",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\app\\user-list\\user-list.component.ts",
   "PreviewInSolutionExplorer": false
 }

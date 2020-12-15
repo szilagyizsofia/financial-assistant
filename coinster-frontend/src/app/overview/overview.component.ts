@@ -48,9 +48,11 @@ export class OverviewComponent implements OnInit {
     this.decorSum = await this.spendingService.getThisMonthSpendingByCategory("decor");
     this.plannedSum = await this.spendingService.getThisMontSpendingByPlanned(true);
     this.impulsiveSum = await this.spendingService.getThisMontSpendingByPlanned(false);
-    this.drawSpendingIncomeRatioChart();
-    this.drawSpendingCategoryRatioChart();
-    this.drawSpendingPlannedChart();
+    if(this.authService.isPremium) {
+      this.drawSpendingIncomeRatioChart();
+      this.drawSpendingCategoryRatioChart();
+      this.drawSpendingPlannedChart();
+    }
   }
 
   drawSpendingIncomeRatioChart(): void {

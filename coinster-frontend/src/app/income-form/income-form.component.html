@@ -9,6 +9,7 @@
              [(ngModel)]="model.amount"
              required
              #amount="ngModel">
+      <mat-error *ngIf="amount.invalid">Amount is required</mat-error>
     </mat-form-field>
   </div>
 
@@ -23,5 +24,5 @@
     </mat-form-field>
   </div>
 
-  <button mat-raised-button type="submit" color="primary">Register</button>
+  <button mat-raised-button type="submit" color="primary" [disabled]="!incomeForm.valid">Register</button>
 </form>

@@ -9,6 +9,7 @@
              [(ngModel)]="model.amount"
              required
              #amount="ngModel">
+      <mat-error *ngIf="amount.invalid">Amount is required</mat-error>
     </mat-form-field>
   </div>
 
@@ -17,7 +18,8 @@
     <input type="radio"
            name="planned"
            [(ngModel)]="model.planned"
-           value="true">
+           value="true"
+           checked="checked">
     Planned<br />
     <input type="radio"
            name="planned"
@@ -28,8 +30,8 @@
 
   <div class="form-group">
     <h3>Choose the most fitting category for your spending</h3>
-    <select name="categories" [(ngModel)]="model.category">
-      <option value="groceries">Groceries</option>
+    <select name="categories" [(ngModel)]="model.category" required>
+      <option value="groceries" selected>Groceries</option>
       <option value="rent">Rent</option>
       <option value="bills">Bills</option>
       <option value="eatingout">Eating out</option>
@@ -40,5 +42,5 @@
     </select>
   </div>
 
-  <button mat-raised-button type="submit" color="primary">Register</button>
+  <button mat-raised-button type="submit" color="primary" [disabled]="!spendingForm.valid" >Register</button>
 </form>

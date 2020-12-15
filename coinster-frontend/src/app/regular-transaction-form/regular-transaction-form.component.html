@@ -6,7 +6,8 @@
     <input type="radio"
            name="spending"
            [(ngModel)]="spending"
-           value="true">
+           value="true"
+           checked="checked">
     Spending<br />
     <input type="radio"
            name="spending"
@@ -24,6 +25,7 @@
              [(ngModel)]="model.amount"
              required
              #amount="ngModel">
+      <mat-error *ngIf="amount.invalid">Amount is required</mat-error>
     </mat-form-field>
   </div>
 
@@ -38,4 +40,4 @@
     </mat-form-field>
   </div>
 
-  <button mat-raised-button type="submit" color="primary">Register</button>
+  <button mat-raised-button type="submit" color="primary" [disabled]="!regularTransactionForm.valid">Register</button>

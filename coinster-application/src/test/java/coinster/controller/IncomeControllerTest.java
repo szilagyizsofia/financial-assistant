@@ -49,7 +49,7 @@ class IncomeControllerTest {
     private RegularTransactionRepository regularTransactionRepository;
 
     @Test
-    void testFindByOwner() {
+    void findByOwner() {
         User owner1 = new User();
         owner1.setUserId(1);
         owner1.setPlan(Plan.premium);
@@ -89,7 +89,7 @@ class IncomeControllerTest {
     }
 
     @Test
-    void testThisMonthSum() {
+    void thisMonthSum() {
         User owner1 = new User();
         owner1.setUserId(1);
         owner1.setPlan(Plan.premium);

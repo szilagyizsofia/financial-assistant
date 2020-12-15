@@ -25,7 +25,7 @@
     <tr>
       <td><h3>Choose your plan</h3></td>
       <td>
-        <select name="plan" [(ngModel)]="model.plan">
+        <select name="plan" [(ngModel)]="model.plan" required>
           <option value="regular">Regular</option>
           <option value="premium">Premium</option>
         </select>
@@ -34,7 +34,7 @@
     <tr>
       <td><h3>Choose your currency</h3></td>
       <td>
-        <select name="currency" [(ngModel)]="model.currency">
+        <select name="currency" [(ngModel)]="model.currency" required>
           <option value="Ft">Ft</option>
           <option value="USD">USD</option>
         </select>
@@ -42,5 +42,5 @@
     </tr>
   </table>
 
-  <button mat-raised-button type="submit" color="primary">Register</button>
+  <button mat-raised-button type="submit" color="primary" [disabled]="!userForm.valid">Register</button>
 </form>

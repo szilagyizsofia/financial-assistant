@@ -5,7 +5,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <div *ngIf="message">
-
+    <p style="color:red;">Bad credentials, the given username or password is incorrect</p>
   </div>
 
   <mat-form-field>
